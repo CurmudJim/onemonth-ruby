@@ -1,0 +1,10 @@
+#movie_cards {
+  margin-top: 5rem;
+}
+body {
+  background: url(https://www.toptal.com/designers/subtlepatterns/patterns/burried.png);
+}
+
+.card {
+  border: none;
+}

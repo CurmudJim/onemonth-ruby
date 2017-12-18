@@ -1,5 +1,5 @@
 require 'sinatra'
-require '/Users/user/Documents/onemonth/omruby/themoviedb.rb'
+require './themoviedb.rb'
 
 
 get '/' do
@@ -9,5 +9,10 @@ end
 
 post '/' do
   @movies = movie_search(params[:movie])
+  @titles = @movies[0]
+  @ids = @movies[1]
+  @overviews = @movies[2]
+  @years = @movies[3]
+  @posters = @movies[4]
   erb :index
 end
