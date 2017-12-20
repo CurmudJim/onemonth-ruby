@@ -8,57 +8,62 @@
   <title>One Month:Ruby</title>
 </head>
 <body>
-
-<nav class="navbar fixed-top navbar-light bg-light justify-content-between">
-  <div class="container">
-
-  <a class="navbar-brand">Let's Find a Movie!</a>
-  <form class="form-inline my-2 my-lg-0" action="/" method="POST">
-    <div class="form-group input-group">
-      <input type="text" name="movie" class="form-control">
-      <span class="input-group-btn">
-        <input type="submit" class="btn btn-secondary">
-      </span>
+  <nav class="navbar fixed-top navbar-light bg-light justify-content-between">
+    <div class="container">
+      <a class="navbar-brand">Let's Find a Movie!</a>
+      <form class="form-inline my-2 my-lg-0" action="/" method="POST">
+        <div class="form-group input-group">
+          <input type="text" name="movie" class="form-control">
+          <span class="input-group-btn">
+            <input type="submit" class="btn btn-secondary">
+          </span>
+        </div>
+      </form>
     </div>
-  </form>
-    </div>
-</nav>
-
+  </nav>
   <div class="container" id="movie_cards">
-    <% if @movies.length > 0 %>
-<div class="card-columns">
+    <% if !@ids.nil? %>
+    <div class="card-columns">
       <% @ids.each do |id| %>
 
       <div class="card" style="min-width: 15rem;" >
-        <img class="card-img-top" src="https://image.tmdb.org/t/p/w640/<%= @posters[@ids.index(id)] %>" alt="Card image cap">
+              <a href="https://www.themoviedb.org/movie/<%= id %>" target="_blank">
+          <% if !@posters[@ids.index(id)].nil? %>
+          <img class="card-img-top" src="https://image.tmdb.org/t/p/w640/<%= @posters[@ids.index(id)] %>" alt="<%= @titles[@ids.index(id)] %>">
+          <% else %>
+          <div class="card-header text-white bg-dark text-center">
+            <h1>NO POSTER</h1>
+          </div>
+          <% end %>
+</a>
         <div class="card-body">
-          <h5 class="card-title">
-            <a href="https://www.themoviedb.org/movie/<%= id %>" target="_blank">
-              <%= @titles[@ids.index(id)] %>
-            </a>
-            <strong> (<%= @years[@ids.index(id)] %>)</strong>
-          </h5>
-          <p>
+          <h4 class="card-title text-center">
+            <%= @titles[@ids.index(id)] %>
+          </h4>
+          <div class="card-title text-muted text-center">
+            (<%= @years[@ids.index(id)] %>)
+          </div>
+          <p class="card-text">
             <%= @overviews[@ids.index(id)] %>
           </p>
         </div>
+
       </div>
 
       <% end %>
-</div>
+    </div>
     <% else %>
     <div class="card text-center">
-  <div class="card-header">
-    <strong>No movies found.</strong>
-  </div>
-
-</div>
-
+      <div class="card-header">
+        <% if @ids.nil? && !@movies[0].nil? %>
+          <h2><%= @movies[0] %></h2>
+        <% else %>
+          <h2>No movies found.</h2>
+        <% end %>
+      </div>
+    </div>
     <% end %>
   </div>
-
-
-
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 </body>
