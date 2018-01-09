@@ -1,0 +1,26 @@
+main {
+  margin-top: 5rem;
+}
+
+#header-btn {
+  padding: 0;
+  border: none;
+}
+
+body {
+  background: url('https://www.toptal.com/designers/subtlepatterns/patterns/navy_blue.png');
+}
+
+.card {
+  border: none;
+}
+
+.flash {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  background: #343a40;
+  color: white;
+  border: 5px;
+}
